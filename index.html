@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nhi Bui — Data &amp; AI Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#FBFAF7;
+    --ink:#1a1815;
+    --ink-soft:#55504a;
+    --ink-faint:#8a847c;
+    --blue:#1F3A5F;
+    --blue-soft:#3a5d8a;
+    --line:#e3ded5;
+    --line-strong:#cfc8bb;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--bone);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--blue);color:var(--bone)}
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(22px,6vw,72px)}
+
+  .label{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--blue)}
+
+  nav{position:sticky;top:0;z-index:50;background:rgba(251,250,247,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:var(--maxw);margin:0 auto;padding:18px clamp(22px,6vw,72px);display:flex;align-items:center;justify-content:space-between}
+  .brand{font-family:var(--serif);font-weight:600;font-size:20px;letter-spacing:-.01em}
+  .brand em{font-style:italic;color:var(--blue)}
+  .nav-links{display:flex;gap:30px;font-size:14px;font-weight:500}
+  .nav-links a{color:var(--ink-soft);transition:color .2s}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-toggle{display:none;background:none;border:none;font-family:var(--serif);font-size:15px;cursor:pointer;color:var(--ink)}
+
+  .hero{padding:clamp(70px,12vw,140px) 0 clamp(50px,8vw,90px)}
+  .hero .label{margin-bottom:30px}
+  .hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(40px,7.5vw,92px);line-height:1.04;letter-spacing:-.025em;max-width:14ch;margin-bottom:34px}
+  .hero h1 em{font-style:italic;color:var(--blue)}
+  .hero .lede{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:62ch;margin-bottom:40px;line-height:1.6}
+  .hero .lede strong{color:var(--ink);font-weight:600}
+  .hero-actions{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+  .link-btn{font-family:var(--sans);font-size:15px;font-weight:600;color:var(--blue);border-bottom:1.5px solid var(--blue);padding-bottom:3px;transition:opacity .2s}
+  .link-btn:hover{opacity:.6}
+  .link-quiet{font-size:15px;color:var(--ink-soft);border-bottom:1px solid var(--line-strong);padding-bottom:3px;transition:color .2s}
+  .link-quiet:hover{color:var(--ink)}
+
+  .meta-strip{display:flex;flex-wrap:wrap;gap:0;border-top:1px solid var(--line);margin-top:clamp(48px,7vw,80px)}
+  .meta-strip .m{padding:22px 34px 22px 0;margin-right:34px;border-right:1px solid var(--line)}
+  .meta-strip .m:last-child{border-right:none}
+  .meta-strip .mk{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:6px}
+  .meta-strip .mv{font-family:var(--serif);font-size:20px;font-weight:500}
+
+  section{padding:clamp(56px,9vw,104px) 0}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:20px;padding-bottom:22px;border-bottom:2px solid var(--ink);margin-bottom:0}
+  .sec-head h2{font-family:var(--serif);font-size:clamp(26px,4vw,40px);font-weight:500;letter-spacing:-.02em}
+  .sec-head .count{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--ink-faint)}
+
+  .project{display:grid;grid-template-columns:88px 1fr;gap:clamp(16px,3vw,40px);padding:clamp(34px,5vw,52px) 0;border-bottom:1px solid var(--line)}
+  .p-num{font-family:var(--serif);font-style:italic;font-size:clamp(22px,3vw,30px);color:var(--blue);line-height:1.2;padding-top:6px}
+  .p-main{min-width:0}
+  .p-course{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:12px}
+  .p-title{font-family:var(--serif);font-size:clamp(26px,4vw,42px);font-weight:500;letter-spacing:-.02em;line-height:1.08;margin-bottom:8px}
+  .p-role{font-size:14px;color:var(--blue);font-weight:500;margin-bottom:20px}
+  .p-role span{color:var(--ink-faint);font-weight:400}
+  .p-desc{font-size:clamp(16px,1.7vw,18px);color:var(--ink-soft);max-width:64ch;margin-bottom:26px}
+  .p-desc strong{color:var(--ink);font-weight:600}
+
+  .metrics{display:flex;flex-wrap:wrap;gap:0;margin-bottom:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .metrics .mt{padding:16px 30px 16px 0;margin-right:30px;border-right:1px solid var(--line)}
+  .metrics .mt:last-child{border-right:none;margin-right:0}
+  .metrics .mtv{font-family:var(--serif);font-size:clamp(22px,2.6vw,30px);font-weight:600;color:var(--ink);line-height:1}
+  .metrics .mtl{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);margin-top:7px}
+
+  .stack{font-size:13.5px;color:var(--ink-soft);margin-bottom:24px;line-height:1.9}
+  .stack b{font-weight:600;color:var(--ink);letter-spacing:.04em;text-transform:uppercase;font-size:11.5px;margin-right:6px}
+  .stack .s{white-space:nowrap}
+  .stack .sep{color:var(--line-strong);margin:0 8px}
+
+  .p-links{display:flex;gap:24px;flex-wrap:wrap}
+  .p-links a{font-size:14px;font-weight:600;color:var(--blue);border-bottom:1.5px solid var(--blue);padding-bottom:2px;transition:opacity .2s}
+  .p-links a:hover{opacity:.55}
+  .p-links a.muted{color:var(--ink-soft);border-color:var(--line-strong)}
+  .p-links a.muted:hover{color:var(--ink)}
+
+  details.more{margin-top:22px}
+  details.more summary{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px}
+  details.more summary::-webkit-details-marker{display:none}
+  details.more summary::after{content:"+";font-family:var(--serif);font-size:18px;line-height:1}
+  details.more[open] summary::after{content:"–"}
+  details.more ul{list-style:none;margin-top:18px;padding-left:0;max-width:64ch}
+  details.more li{font-size:15.5px;color:var(--ink-soft);padding-left:22px;position:relative;margin-bottom:12px}
+  details.more li::before{content:"";position:absolute;left:0;top:11px;width:8px;height:1px;background:var(--blue)}
+  details.more li strong{color:var(--ink);font-weight:600}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,72px);margin-top:48px}
+  .about-lede{font-family:var(--serif);font-size:clamp(20px,2.6vw,27px);font-weight:400;line-height:1.45;letter-spacing:-.01em}
+  .about-lede em{font-style:italic;color:var(--blue)}
+  .about-body p{font-size:16px;color:var(--ink-soft);margin-bottom:16px}
+  .about-body p strong{color:var(--ink);font-weight:600}
+  .skills-list{margin-top:8px}
+  .skills-list .row{padding:16px 0;border-top:1px solid var(--line)}
+  .skills-list .row:last-child{border-bottom:1px solid var(--line)}
+  .skills-list .rk{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+  .skills-list .rv{font-size:15px;color:var(--ink-soft)}
+
+  .contact{text-align:center;padding:clamp(70px,11vw,130px) 0}
+  .contact .label{margin-bottom:24px}
+  .contact h2{font-family:var(--serif);font-weight:500;font-size:clamp(34px,6vw,68px);letter-spacing:-.025em;line-height:1.05;margin-bottom:24px}
+  .contact h2 em{font-style:italic;color:var(--blue)}
+  .contact p{font-size:18px;color:var(--ink-soft);max-width:48ch;margin:0 auto 40px}
+  .contact-links{display:flex;gap:34px;justify-content:center;flex-wrap:wrap}
+  .contact-links a{font-size:16px;font-weight:600;color:var(--blue);border-bottom:1.5px solid var(--blue);padding-bottom:3px;transition:opacity .2s}
+  .contact-links a:hover{opacity:.55}
+
+  footer{border-top:1px solid var(--line);padding:30px 0}
+  .foot-inner{max-width:var(--maxw);margin:0 auto;padding:0 clamp(22px,6vw,72px);display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--ink-faint);flex-wrap:wrap;gap:10px}
+  .foot-inner .brand{font-size:16px}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .nav-links.open{display:flex;flex-direction:column;position:absolute;top:62px;right:22px;background:var(--bone);border:1px solid var(--line);padding:18px 26px;gap:16px;border-radius:4px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    .nav-toggle{display:block}
+    .project{grid-template-columns:1fr;gap:8px}
+    .p-num{padding-top:0}
+    .about{grid-template-columns:1fr;gap:28px}
+    .meta-strip .m{padding-right:20px;margin-right:20px}
+  }
+  @media (prefers-reduced-motion:reduce){.reveal{transition:none;opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">Nhi Bui</div>
+    <button class="nav-toggle" id="navToggle">Menu</button>
+    <div class="nav-links" id="navLinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero" id="top">
+    <div class="label reveal">Data &amp; AI Portfolio</div>
+    <h1 class="reveal">Turning messy data into <em>decisions</em> people can act on.</h1>
+    <p class="lede reveal">I'm an analyst and builder working across <strong>agentic AI, retrieval pipelines, and applied machine learning</strong>. The work below spans multi-agent systems, ML-powered search, relational data modeling, and project planning — each one built and shipped end to end.</p>
+    <div class="hero-actions reveal">
+      <a class="link-btn" href="#work">See the work</a>
+      <a class="link-quiet" href="#contact">Get in touch</a>
+    </div>
+
+    <div class="meta-strip reveal">
+      <div class="m"><div class="mk">Projects</div><div class="mv">Four</div></div>
+      <div class="m"><div class="mk">Focus</div><div class="mv">Agentic AI &amp; Data</div></div>
+      <div class="m"><div class="mk">Core stack</div><div class="mv">Python · SQL</div></div>
+      <div class="m"><div class="mk">Based in</div><div class="mv">San Francisco</div></div>
+    </div>
+  </header>
+
+  <section id="work">
+    <div class="sec-head reveal">
+      <h2>Selected Work</h2>
+      <span class="count">Four projects, 2024–2026</span>
+    </div>
+
+    <article class="project reveal">
+      <div class="p-num">Nº 01</div>
+      <div class="p-main">
+        <div class="p-course">ISYS 573 · Agentic AI in Business · Spring 2026</div>
+        <h3 class="p-title">CareerCompass</h3>
+        <div class="p-role">Data &amp; RAG Engineer <span>· 5-person team · LangGraph multi-agent system</span></div>
+        <p class="p-desc">An end-to-end career-strategy engine. A <strong>LangGraph supervisor</strong> coordinates five specialized agents — market demand, skill-gap analysis, curriculum planning, resume optimization, and interview simulation — over a shared, validated state contract. I owned the <strong>retrieval layer</strong>: a RAG pipeline that grounds every recommendation in real job postings rather than generic model knowledge.</p>
+
+        <div class="metrics">
+          <div class="mt"><div class="mtv">5</div><div class="mtl">Coordinated agents</div></div>
+          <div class="mt"><div class="mtv">85%</div><div class="mtl">Skill-gap agreement</div></div>
+          <div class="mt"><div class="mtv">&lt;20s</div><div class="mtl">End-to-end latency</div></div>
+          <div class="mt"><div class="mtv">4.2/5</div><div class="mtl">Roadmap relevance</div></div>
+        </div>
+
+        <div class="stack"><b>Built with</b>
+          <span class="s">LangGraph</span><span class="sep">·</span><span class="s">RAG</span><span class="sep">·</span><span class="s">ChromaDB</span><span class="sep">·</span><span class="s">sentence-transformers</span><span class="sep">·</span><span class="s">Python</span><span class="sep">·</span><span class="s">Streamlit</span><span class="sep">·</span><span class="s">Docker</span>
+        </div>
+
+        <div class="p-links">
+          <a href="https://github.com/Nolos510/573-CareerCompass-Project" target="_blank" rel="noopener">Code →</a>
+          <a href="https://drive.google.com/file/d/1iBmgeftvbBMHzyMucyB45OTV9BPSzWkl/view" target="_blank" rel="noopener">Watch demo →</a>
+          <a class="muted" href="#" data-needslink="report" target="_blank" rel="noopener">Report</a>
+        </div>
+
+        <details class="more">
+          <summary>Technical detail</summary>
+          <ul>
+            <li><strong>Two-stage retrieval:</strong> target role + location query a ChromaDB index built on sentence-transformer embeddings; top-k postings are parsed for skills, qualifications, and salary signals, returned as a structured evidence summary.</li>
+            <li><strong>Resilient by design:</strong> typed JSON output contracts per agent with deterministic fallbacks — a malformed model response logs a warning and falls back without breaking the workflow.</li>
+            <li><strong>Full traceability:</strong> agents communicate only through shared state with append-only handoff records, surfaced as an inter-agent handoff table in the dashboard.</li>
+            <li><strong>Met all six success metrics</strong> across deterministic and live-LLM modes; fully containerized for portable deployment.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="p-num">Nº 02</div>
+      <div class="p-main">
+        <div class="p-course">ISYS 574 · AI/ML for Business · Fall 2025</div>
+        <h3 class="p-title">SF Events Explorer</h3>
+        <div class="p-role">Product Lead <span>· ML-powered event discovery app</span></div>
+        <p class="p-desc">A hybrid search engine over <strong>1,901 San Francisco community events</strong>. It pairs a TF-IDF vector model with a rule-based feature-boosting layer that reads age group, cost, and time-of-day signals — reframed from a failed regression approach into a <strong>text-retrieval problem</strong> after two strategic pivots.</p>
+
+        <div class="metrics">
+          <div class="mt"><div class="mtv">1,901</div><div class="mtl">Events indexed</div></div>
+          <div class="mt"><div class="mtv">0.75</div><div class="mtl">Mean Precision@10</div></div>
+          <div class="mt"><div class="mtv">0.875</div><div class="mtl">MRR</div></div>
+          <div class="mt"><div class="mtv">+46%</div><div class="mtl">MRR vs. baseline</div></div>
+        </div>
+
+        <div class="stack"><b>Built with</b>
+          <span class="s">Python</span><span class="sep">·</span><span class="s">scikit-learn</span><span class="sep">·</span><span class="s">TF-IDF</span><span class="sep">·</span><span class="s">cosine similarity</span><span class="sep">·</span><span class="s">regex feature-boosting</span><span class="sep">·</span><span class="s">bigrams</span>
+        </div>
+
+        <div class="p-links">
+          <a href="https://github.com/nhibb262/-ISYS574-ML-Group-Project" target="_blank" rel="noopener">Code →</a>
+          <a class="muted" href="#" data-needslink="demo" target="_blank" rel="noopener">Try it</a>
+          <a class="muted" href="#" data-needslink="writeup" target="_blank" rel="noopener">Writeup</a>
+        </div>
+
+        <details class="more">
+          <summary>Technical detail</summary>
+          <ul>
+            <li><strong>3,000-feature vocabulary</strong> with bigram support; a regex layer boosts matches on structured signals (age, cost, time) that pure TF-IDF misses.</li>
+            <li><strong>Outperformed a CountVectorizer baseline</strong> by 12% on precision and 46% on MRR.</li>
+            <li><strong>Two pivots:</strong> abandoned the regression framing twice before landing on retrieval — a record of decision-making under uncertainty.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="p-num">Nº 03</div>
+      <div class="p-main">
+        <div class="p-course">ISYS 464 · Database Systems · Spring 2026</div>
+        <h3 class="p-title">Sole &amp; Story Retail Database</h3>
+        <div class="p-role">Database Designer <span>· SQL &amp; relational data modeling</span></div>
+        <p class="p-desc">An <strong>8-table relational database</strong> (MySQL) modeling omnichannel retail — customers, products, employees, stores, and orders — with full referential integrity across eight foreign-key relationships and junction tables resolving many-to-many associations.</p>
+
+        <div class="metrics">
+          <div class="mt"><div class="mtv">8</div><div class="mtl">Normalized tables</div></div>
+          <div class="mt"><div class="mtv">6</div><div class="mtl">Analytical queries</div></div>
+          <div class="mt"><div class="mtv">100+</div><div class="mtl">Seeded order lines</div></div>
+          <div class="mt"><div class="mtv">8</div><div class="mtl">FK relationships</div></div>
+        </div>
+
+        <div class="stack"><b>Built with</b>
+          <span class="s">MySQL</span><span class="sep">·</span><span class="s">DDL / DML</span><span class="sep">·</span><span class="s">CTEs</span><span class="sep">·</span><span class="s">JOINs</span><span class="sep">·</span><span class="s">GROUP BY / HAVING</span><span class="sep">·</span><span class="s">subqueries</span>
+        </div>
+
+        <div class="p-links">
+          <a class="muted" href="#" data-needslink="repo" target="_blank" rel="noopener">Code</a>
+        </div>
+
+        <details class="more">
+          <summary>Technical detail</summary>
+          <ul>
+            <li><strong>Build + load scripts:</strong> typed schemas, composite primary keys, and constraints; seeded a realistic dataset (12 stores, 30 customers, 25 products, 50 orders) sequenced to respect FK dependencies.</li>
+            <li><strong>6 analytical queries of rising complexity:</strong> multi-table JOINs, GROUP BY/HAVING aggregations (top customers by spend), a correlated-style subquery, and a CTE computing revenue ranked by store.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+
+    <article class="project reveal">
+      <div class="p-num">Nº 04</div>
+      <div class="p-main">
+        <div class="p-course">ISYS 663 · IT Project Management · 2024</div>
+        <h3 class="p-title">NASA CollabMatrix</h3>
+        <div class="p-role">Project Lead <span>· PMBOK-aligned planning simulation</span></div>
+        <p class="p-desc">A full project-management plan for a simulated NASA-scoped collaboration platform. I led planning and requirements documentation end to end, producing the <strong>project schedule, risk register, quality management plan, and stakeholder communication plan</strong> using PMBOK-aligned methodology.</p>
+
+        <div class="metrics">
+          <div class="mt"><div class="mtv">4</div><div class="mtl">Core PM artifacts</div></div>
+          <div class="mt"><div class="mtv">PMBOK</div><div class="mtl">Methodology</div></div>
+          <div class="mt"><div class="mtv">Cross-fn</div><div class="mtl">Deliverable scope</div></div>
+        </div>
+
+        <div class="stack"><b>Covered</b>
+          <span class="s">project scheduling</span><span class="sep">·</span><span class="s">risk register</span><span class="sep">·</span><span class="s">quality management</span><span class="sep">·</span><span class="s">stakeholder comms</span><span class="sep">·</span><span class="s">requirements docs</span>
+        </div>
+
+        <div class="p-links">
+          <a class="muted" href="#" data-needslink="collabmatrix-docs" target="_blank" rel="noopener">Project docs</a>
+        </div>
+
+        <details class="more">
+          <summary>Technical detail</summary>
+          <ul>
+            <li><strong>Planning artifacts:</strong> a project schedule, risk register with mitigation owners, quality management plan, and stakeholder communication plan for a NASA-scoped initiative.</li>
+            <li><strong>Requirements &amp; coordination:</strong> gathered requirements and tracked cross-functional deliverables, producing stakeholder reporting throughout the lifecycle.</li>
+          </ul>
+        </details>
+      </div>
+    </article>
+  </section>
+
+  <section id="about">
+    <div class="sec-head reveal">
+      <h2>About</h2>
+      <span class="count">The person behind the work</span>
+    </div>
+    <div class="about">
+      <div class="reveal">
+        <p class="about-lede">I build <em>AI-first analytical tooling</em> — agentic workflows, retrieval pipelines, and deployed apps — on top of five years turning data into operational decisions across fintech, Web3, and retail.</p>
+      </div>
+      <div class="about-body reveal">
+        <p>My approach to AI development is hands-on: I design the workflow, author the prompt and skill structure, then validate the output. The projects here reflect that — real systems with measured results, not demos.</p>
+        <p>I'm currently based in <strong>San Francisco</strong> and open to data, operations, and product analyst roles.</p>
+        <div class="skills-list">
+          <div class="row"><div class="rk">AI &amp; ML</div><div class="rv">LangGraph · RAG · agentic systems · scikit-learn · TF-IDF · embeddings</div></div>
+          <div class="row"><div class="rk">Data &amp; Languages</div><div class="rv">Python · pandas · SQL (CTEs, window functions) · MySQL · relational modeling</div></div>
+          <div class="row"><div class="rk">Apps &amp; Tooling</div><div class="rv">Streamlit · Docker · Git · Excel modeling · Figma</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="label reveal">Available for new roles</div>
+    <h2 class="reveal">Let's talk <em>data &amp; AI.</em></h2>
+    <p class="reveal">Open to data, operations, and product analyst roles in the Bay Area and remote. The fastest way to reach me:</p>
+    <div class="contact-links reveal">
+      <a href="mailto:nhi.tx.bui@icloud.com">nhi.tx.bui@icloud.com</a>
+      <a href="https://linkedin.com/in/nhibui262" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/nhibb262" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div class="brand">Nhi Bui</div>
+    <div>© 2026 · Designed &amp; built by Nhi Bui</div>
+  </div>
+</footer>
+
+<script>
+  const tg=document.getElementById('navToggle'),nl=document.getElementById('navLinks');
+  tg.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+
+  const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}});},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  document.querySelectorAll('[data-needslink]').forEach(a=>{
+    a.addEventListener('click',ev=>{if(a.getAttribute('href')==='#'){ev.preventDefault();alert('Add your link for: '+a.dataset.needslink);}});
+  });
+</script>
+</body>
+</html>
